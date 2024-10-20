@@ -28,9 +28,15 @@ Refining my strengths as a developer at SNHU and the development of my ePortfoli
 
 #### Reverse Engineered Basic Arithmetic Calculator in C++
 
-My original artifact for this ePortfolio that I choose to fix is from the last class I mentioned, **CS410: Reverse Software Engineering**. 
+My original artifact for this ePortfolio that I choose to fix is from the last class I mentioned, **CS410: Reverse Software Engineering**, which I took and completed in August of this year. 
 I reverse engineered code from binary to assembly and finally C++. At this point, I identified and fixed any vulnerabilties. Once I completed that, I converted the code back to binary. 
 
+The vulnerabilities I found were as follows:
+
+- No error thrown or loop if numbers are incorrectly lower than 1 or higher than 3
+  
+- No form of handling unnecessarily large numbers or invalid data input
+  
 In this code, the user would be shown a displaymenu with multiple options numbered 1 through 4. Once the user entered their choice, they would enter 2 numbers for the chosen arithmetic operation (add, subtract, or multiply). The arithmetic operation's answer would be printed on the terminal for the user to see. In my edited code, I added input validation for both the user choice and the user numbers input for the operations to ensure the user choice was 1-4 and that the operation numbers would not be too large as to cause overflow. 
 
 This will be the artifact improved in each of the 3 improved artifact sections. 
@@ -115,13 +121,160 @@ int main() {
 
 #### Software Design and Engineering
 
-I choose this code to show my capabilities as a developer related to software design and engineering due to how much room the code had to be improved into a more versatile application, while lacking a lot of features to actually be useable in its current state outside of niche situations. 
+###### Submitted 9/22/2024
 
+I choose this code to show my capabilities as a developer related to software design and engineering. Due to how much room the code had to be improved into a more versatile application, while lacking a lot of features to actually be useable in its current state outside of niche situations, I found that this was a great place to showcase my understanding behind software design and how to approach enhancing a project into a realistic application for real-world use. While the code was C++ in the original artifact, I changed the code into Java to further showcase my skills in transfering code into different languages as well as expanding the complexity of existing code. 
+This artifact not only showcases my skills as a programmer, but also provides room for further enhancements to demonstrate advanced software design techniques. The calculator application serves as a foundation that can be improved by refining its design and structure. Specifically, I am enhancing the input validation even further and refactoring the code to use object-oriented principles such as inheritance, as well as adding a new operation that is Divide. This will involve separating the operations into individual methods, which will be derived from a parent class. These improvements will enhance both the user experience and the maintainability of the code, demonstrating my ability to design and implement clean, scalable software solutions. By adding input validation, I ensure that the program handles user input more efficiently and prevents errors that could lead to incorrect calculations or crashes. Additionally, refactoring the code to implement inheritance improves the structure of the application, allowing for future expandability and making the program easier to maintain and debug. These improvements demonstrate my ability to use innovative techniques like object-oriented design, which is essential for developing scalable and reliable software solutions that meet industry standards.
+
+The main challenges I encountered during this enhancement process involved translating my C++ code into Java, which highlighted the differences in language syntax and libraries. The enhancements made to the input validation process ensure that user input is handled correctly and prevent common errors like overflow, which could lead to system crashes. Moreover, refactoring the program to implement inheritance and separate concerns improved the code's maintainability and readability. This not only makes it easier for future developers to understand and modify the code but also aligns with industry best practices for software engineering.
+
+The experience of converting code from C++ to Java and enhancing it taught me valuable lessons about adapting software across different languages. This skill will be beneficial in my professional career as I work on cross-platform applications or migrate legacy systems to more modern environments.
+
+```
+import java.util.Scanner;
+
+// Base abstract class
+abstract class Operation {
+    public abstract double performOperation(double n1, double n2) throws ArithmeticException;
+}
+
+// Addition class inherits from Operation
+class Addition extends Operation {
+    @Override
+    public double performOperation(double n1, double n2) {
+        return n1 + n2;
+    }
+}
+
+// Subtraction class inherits from Operation
+class Subtraction extends Operation {
+    @Override
+    public double performOperation(double n1, double n2) {
+        return n1 - n2;
+    }
+}
+
+// Multiplication class inherits from Operation
+class Multiplication extends Operation {
+    @Override
+    public double performOperation(double n1, double n2) {
+        return n1 * n2;
+    }
+}
+
+// Division class inherits from Operation
+class Division extends Operation {
+    @Override
+    public double performOperation(double n1, double n2) throws ArithmeticException {
+        if (n2 == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
+        return n1 / n2;
+    }
+}
+
+// Class to display the menu and handle user input
+class DisplayMenu {
+    public static void showMenu() {
+        System.out.println("1) Add");
+        System.out.println("2) Subtract");
+        System.out.println("3) Multiply");
+        System.out.println("4) Divide");
+        System.out.println("5) Exit");
+    }
+}
+
+// Main class
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int userChoice = 0;
+
+        while (userChoice != 5) {
+            DisplayMenu.showMenu();
+            System.out.print("Enter your choice (1-5): ");
+
+            // Validate user input for menu choice
+            if (!scanner.hasNextInt()) {
+                scanner.next(); // Discard invalid input
+                System.out.println("Invalid input. Please enter a number between 1 and 5.");
+                continue;
+            }
+
+            userChoice = scanner.nextInt();
+
+            if (userChoice == 5) {
+                System.out.println("Exiting program.");
+                break;
+            }
+
+            if (userChoice < 1 || userChoice > 5) {
+                System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+                continue;
+            }
+
+            // Get two numbers from the user
+            System.out.print("Enter the first number: ");
+            while (!scanner.hasNextDouble()) {
+                scanner.next(); // Discard invalid input
+                System.out.print("Invalid input. Please enter a valid number for the first operand: ");
+            }
+            double n1 = scanner.nextDouble();
+
+            System.out.print("Enter the second number: ");
+            while (!scanner.hasNextDouble()) {
+                scanner.next(); // Discard invalid input
+                System.out.print("Invalid input. Please enter a valid number for the second operand: ");
+            }
+            double n2 = scanner.nextDouble();
+
+
+            Operation operation = null;
+            try {
+                switch (userChoice) {
+                    case 1:
+                        operation = new Addition();
+                        break;
+                    case 2:
+                        operation = new Subtraction();
+                        break;
+                    case 3:
+                        operation = new Multiplication();
+                        break;
+                    case 4:
+                        operation = new Division();
+                        break;
+                }
+
+                if (operation != null) {
+                    double result = operation.performOperation(n1, n2);
+                    System.out.println("Result: " + result);
+                }
+            } catch (ArithmeticException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+```
 ## Second Enhancement
 
 #### Algorithms and Data Structure
+
+###### Submitted on 10/1/2024
+
+This enhancement is a continuation of the previous improvements made in Enhancement One to the calculator project. Initially, the calculator supported three operations: addition, subtraction, and multiplication. In Enhancement One, it was expanded to four with the addition of the Division operation as well as implementing inheritance for all operation classes. For this enhancement, I focused on optimizing the calculator’s performance and incorporating advanced data structures. I expanded the existing functionality by adding even more additional operations (modulus, power, square root, and sorting), implemented more efficient validation mechanisms, and introduced HashMap and ArrayList data structures to improve flexibility. The sorting algorithm uses a hybrid approach of merge and insertion sorting with a time complexity of O(n logn) for the average case, ensuring high efficiency for both ascending and descending sorts. By introducing data structures like HashMap and ArrayList, the code became more versatile and easier to maintain. These enhancements not only allow for more scalable solutions but also align with industry standard practices for modular, flexible code. The sorting algorithm demonstrates my ability to design efficient solutions to common problems, ensuring the application can handle a variety of inputs while maintaining optimal performance. Additionally, I refactored the code to improve readability by modularizing the design, allowing future developers to easily navigate and modify the program.
+
+Enhancing this artifact provided valuable insights into algorithm optimization and the challenges of managing data structures in a modular program. One of the most significant challenges was implementing a sorting algorithm with the desired O(n logn) time complexity while ensuring that it could handle dynamic input sizes effectively. I learned a great deal about the nuances of sorting algorithms in Java, particularly how Collections.sort() can simplify complex sorting operations without compromising performance or development time.
+Feedback played a crucial role in this enhancement. Initially, my code lacked sufficient documentation around time complexity and algorithmic choices, which was highlighted in the feedback I received. To address this, I added detailed comments in the code, explaining the logic behind each algorithm and providing a clear breakdown of Big O notation for the sorting algorithm. This ensured that the code met the standards of both efficiency and clarity.
 
 ## Third Enhancement 
 
 #### Databases
 
+###### Submitted on 10/7/2024
+
+This enhancement is the third and final (yay!) iteration of the multipurpose calculator project. In the initial stages, the calculator performed basic arithmetic operations—addition, subtraction, and multiplication—before being enhanced with more operations and improved modularity through object-oriented design. In this third enhancement, I implemented database functionality using SQLite3, allowing the program to store results from operations and retrieve a history of the last 10 operations performed by the user. This added layer of complexity introduced data persistence, making the application more useful in a real-world scenario where users may want to revisit previous calculations.
