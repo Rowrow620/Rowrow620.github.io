@@ -1,5 +1,9 @@
 ## **Self-Assessment**
 
+###### Name: Juan Sanchez
+
+###### SNHU CS-499 Final Project
+
 #### Backstory
 
 Having started my journey at SNHU in January of 2023, I have spent almost a full two years now in the process of getting my Computer Science Bachelors Degree. While I do not believe I had any innate talent for coding, I have always been fond of puzzle-solving, and do not lack the persistence (some may prefer to call it *stubbornness*) that is often needed in the world of coding. With both of my parents being born in Mexico and them being the first to have kids in an attempt to start a fruitful life in the United States, I am the oldest second-generation immigrant of my extended family. In turn, I was the first to attend college before any of my cousins or my younger sister. While this pressure seemed insurmountable at times, as well as there being multiple bumps in the road along the way, I have persevered and have been named on the Honor Roll 8 times, named on the Dean's list 2 times, and have managed to finally be named on the President's list two times in my last two semesters here at SNHU. To say that this brings a warm joy and an indescribable feeling of relief would only be an understatement. If you had seen my lack of academic consistency during my years in community college and had you told me that this would be the student I turned into, I would surely not believe it. As such, I am tremendously proud of what I have accomplished so far and I aspire to use all I have learned to become a successful programmer outside of SNHU.
