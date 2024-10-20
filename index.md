@@ -4,8 +4,11 @@
 
 ## Original Artifacts
 
-## First Enhancement
+## First Enhancement: 
+Software Design and Engineering
 
 ## Second Enhancement
+Algorithms and Data Structure
 
-## Third Enhancement
+## Third Enhancement: Databases
+
