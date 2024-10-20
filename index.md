@@ -43,7 +43,7 @@ This will be the artifact improved in each of the 3 improved artifact sections.
 
 The orginal C++ code once fixed of vulnerabilties:
 
-```
+```java
 #include <iostream>
 #include <limits>  
 
