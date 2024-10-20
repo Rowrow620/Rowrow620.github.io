@@ -1,2 +1,8 @@
-Hello! Welcome to my ePortfolio for CS499.
+# ePortfolio
+# 
 
+---
+
+## CS499 Computer Science Capstone 
+
+---
