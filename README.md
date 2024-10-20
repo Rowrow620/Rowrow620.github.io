@@ -7,3 +7,7 @@
 [Journal 2: Marketing With ePortfolios and Artifact Update](CS499_Documents/Journal2 "Marketing With ePortfolios and Artifact Update")
 
 [Journal 3: Career Choice and Artifact Update](CS499_Documents/Journal3 "Career Choice and Artifact Update")
+
+[Journal 4: Computer Science Trends and Artifact Update](CS499_Documents/Journal4 "Computer Science Trends and Artifact Update")
+
+[Journal 5: Emerging Technology and Artifact Update](CS499_Documents/Journal5 "Emerging Technology and Artifact Update")
