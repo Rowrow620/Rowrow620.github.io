@@ -266,10 +266,121 @@ public class Calculator {
 
 ###### Submitted on 10/1/2024
 
-This enhancement is a continuation of the previous improvements made in Enhancement One to the calculator project. Initially, the calculator supported three operations: addition, subtraction, and multiplication. In Enhancement One, it was expanded to four with the addition of the Division operation as well as implementing inheritance for all operation classes. For this enhancement, I focused on optimizing the calculator’s performance and incorporating advanced data structures. I expanded the existing functionality by adding even more additional operations (modulus, power, square root, and sorting), implemented more efficient validation mechanisms, and introduced HashMap and ArrayList data structures to improve flexibility. The sorting algorithm uses a hybrid approach of merge and insertion sorting with a time complexity of O(n logn) for the average case, ensuring high efficiency for both ascending and descending sorts. By introducing data structures like HashMap and ArrayList, the code became more versatile and easier to maintain. These enhancements not only allow for more scalable solutions but also align with industry standard practices for modular, flexible code. The sorting algorithm demonstrates my ability to design efficient solutions to common problems, ensuring the application can handle a variety of inputs while maintaining optimal performance. Additionally, I refactored the code to improve readability by modularizing the design, allowing future developers to easily navigate and modify the program.
+This enhancement is a continuation of the previous improvements made in Enhancement One to the calculator project. Initially, the calculator supported three operations: addition, subtraction, and multiplication. In Enhancement One, it was expanded to four with the addition of the Division operation as well as implementing inheritance for all operation classes. For this enhancement, I focused on optimizing the calculator’s performance and incorporating advanced data structures. I expanded the existing functionality by adding even more additional operations (modulus, power, square root, and sorting), implemented more efficient validation mechanisms, and introduced HashMap and ArrayList data structures to improve flexibility. The sorting algorithm uses a hybrid approach of merge and insertion sorting with a time complexity of O(n logn) for the average case, ensuring high efficiency for both ascending and descending sorts. By introducing data structures like HashMap and ArrayList, the code became more versatile and easier to maintain. These enhancements not only allow for more scalable solutions but also align with industry standard practices for modular, flexible code. The sorting algorithm demonstrates my ability to design efficient solutions to common problems, ensuring the application can handle a variety of inputs while maintaining optimal performance. Additionally, I refactored the code to improve readability by modularizing the design, allowing future developers to easily navigate and modify the program. In this enhancement, I cleaned the main file by moving all of the operations into their own class. As such, I will show the main class and one example class for clarity in the example below.
 
 Enhancing this artifact provided valuable insights into algorithm optimization and the challenges of managing data structures in a modular program. One of the most significant challenges was implementing a sorting algorithm with the desired O(n logn) time complexity while ensuring that it could handle dynamic input sizes effectively. I learned a great deal about the nuances of sorting algorithms in Java, particularly how Collections.sort() can simplify complex sorting operations without compromising performance or development time.
 Feedback played a crucial role in this enhancement. Initially, my code lacked sufficient documentation around time complexity and algorithmic choices, which was highlighted in the feedback I received. To address this, I added detailed comments in the code, explaining the logic behind each algorithm and providing a clear breakdown of Big O notation for the sorting algorithm. This ensured that the code met the standards of both efficiency and clarity.
+
+The updated Main class:
+```
+
+// Main class
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 1.2 Update 2: Added hashmap operationsMap to be used to store operations
+        // Added due to its versatility and plan to use its features more with the added database next update.
+
+        Map<Integer, Operation> operationsMap = new HashMap<>();
+        operationsMap.put(1, new Addition());
+        operationsMap.put(2, new Subtraction());
+        operationsMap.put(3, new Multiplication());
+        operationsMap.put(4, new Division());
+        operationsMap.put(5, new Modulus());
+        operationsMap.put(6, new Power());
+        operationsMap.put(7, new SquareRoot());
+        SortOperation sortOperation = new SortOperation();
+
+        int userChoice;
+
+        // loops displayMenu until user chooses to exit
+        while (true) {
+            DisplayMenu.showMenu();
+            //Validates User input through getValidInteger
+            userChoice = DisplayMenu.getValidInteger(scanner, "Enter your choice (1-9): ");
+            //closes program if user enter '9'
+            if (userChoice == 9) {
+                System.out.println("Exiting program."); // closes program
+                break;
+            }
+
+            //Update 3:  Added a sorting operation that takes user inputs and sorts based on user choices (ascend/descend)
+            // Validates user inputs and requests another input if number is incorrect
+
+            // Sorting operation (choice 8)
+            if (userChoice == 8) {
+                List<Double> numbers = DisplayMenu.getNumberList(scanner);
+                System.out.print("Sort in ascending order? (y/n): ");
+                boolean ascending = scanner.next().equalsIgnoreCase("y");
+                List<Double> sortedNumbers = sortOperation.performSortOperation(numbers, ascending);
+                System.out.println("Sorted numbers: " + sortedNumbers);
+            } else if (!operationsMap.containsKey(userChoice)) {
+                System.out.println("Invalid input. Please enter a number between 1 and 9.");
+                continue;
+            } else {
+                //
+                if (userChoice == 7) {
+                    // prompt for only one number for square root
+                    double n1 = DisplayMenu.getValidInteger(scanner, "Choose one number: ");
+                    Operation operation = operationsMap.get(userChoice);
+                    double result = operation.performOperation(n1, 0); // n2 is ignored
+                    System.out.println("Result: " + result);
+                } else {
+                    // for the other operations requiring two numbers
+                    double n1 = DisplayMenu.getValidInteger(scanner, "Enter the first number: ");
+                    double n2 = DisplayMenu.getValidInteger(scanner, "Enter the second number: ");
+
+                    Operation operation = operationsMap.get(userChoice);
+                    try {
+                        double result = operation.performOperation(n1, n2);
+                        System.out.println("Result: " + result);
+                    } catch (ArithmeticException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+            }
+
+            // ask if the user wants to continue
+            System.out.print("Continue? (y/n): ");
+            String continueChoice = scanner.next().toLowerCase();
+            if (!continueChoice.equals("y")) {
+                System.out.println("Exiting program.");
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
+```
+operation examples:
+
+```
+class SortOperation  {
+
+    // time complexity:
+    // O(n log n)
+    public List<Double> performSortOperation(List<Double> numbers, boolean ascending) {
+        if (ascending) {
+            Collections.sort(numbers); // Sort in ascending order
+        } else {
+            numbers.sort(Collections.reverseOrder()); // Sort in descending order
+        }
+        return numbers;
+    }
+}
+```
+```
+class Addition extends Operation {
+    @Override
+    public double performOperation(double n1, double n2) {
+        return n1 + n2;
+    }
+}
+```
+
 
 ## Third Enhancement 
 
@@ -282,3 +393,162 @@ This enhancement is the third and final (yay!) iteration of the multipurpose cal
 The database feature includes storing the type of operation, the operands, and the results. The data retrieval function is presented as an option in the display menu, and only the most recent 10 operations are shown, ensuring that the display remains manageable while maintaining performance. I included this artifact in my ePortfolio because it demonstrates my understanding of database design and data persistence in the context of software development. By integrating SQLite, I showcased my ability to connect an application to a relational database, execute SQL queries efficiently, and retrieve data in a user friendly format. This enhancement also reflects my skills in modular programming, as I refactored the code to ensure that the database operations are kept separate from the core functionality of the calculator. his artifact highlights my skills in data storage and retrieval, SQL optimization, and error handling. By limiting the history retrieval to the 10 most recent operations, I ensured that the database queries remain efficient, even as the database grows over time. 
 
 The process of integrating SQLite into the calculator application was a very fruitful learning experience. One of the most significant lessons was the importance of data persistence. In previous versions of the application, all operations were handled in memory, meaning that once the program was closed, all data was lost. By adding a database, I learned how to manage persistent storage, giving the application the ability to retain data between sessions and providing users with the ability to retrieve their previous calculations. One of the main challenges I faced was optimizing the database queries to ensure they were efficient. Initially, I didn’t focus enough on the time complexity of operations, but as the application grew, I realized the importance of considering performance. The SQL ORDER BY and LIMIT clauses were used to retrieve the 10 most recent operations efficiently, ensuring the program remains responsive even with larger datasets. 
+
+```
+
+public class Main {
+
+    // establishes connection to SQLite
+    private static Connection connect() {
+        String url = "jdbc:sqlite:calculator.db"; // SQLite db file
+        Connection conn = null;
+        try {
+            // loads the SQLite JDBC driver
+            Class.forName("org.sqlite.JDBC");
+
+            // establish a connection with the db
+            conn = DriverManager.getConnection(url);
+            System.out.println("Connected to the database.");
+        } catch (SQLException e) {
+            System.out.println("SQL error: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("SQLite JDBC Driver was not found.");
+            e.printStackTrace();
+        }
+        return conn;
+    }
+
+    // creates operations table in SQLite database
+    private static void createTable() {
+        // SQL that creates a new table
+        String sql = "CREATE TABLE IF NOT EXISTS operations ("
+                + " id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + " operation TEXT NOT NULL,"
+                + " operand1 REAL,"
+                + " operand2 REAL,"
+                + " result REAL"
+                + ");";
+
+        try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Table 'operations' created or already exists.");
+        } catch (SQLException e) {
+            System.out.println("SQL error during table creation: " + e.getMessage());
+        }
+    }
+
+    // inserts an operation into the SQLite database
+    private static void insertOperation(String operation, double operand1, double operand2, double result) {
+        String sql = "INSERT INTO operations(operation, operand1, operand2, result) VALUES(?,?,?,?)";
+
+        try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, operation);
+            pstmt.setDouble(2, operand1);
+            pstmt.setDouble(3, operand2);
+            pstmt.setDouble(4, result);
+            pstmt.executeUpdate();
+            System.out.println("Operation saved to database.");
+        } catch (SQLException e) {
+            System.out.println("Error during insertion: " + e.getMessage());
+        }
+    }
+
+    // UPDATE 1.3: display the last 10 past operations
+    // Needed to get operation 0 in the displaymenu to work
+    private static void viewPastOperations() {
+        String sql = "SELECT id, operation, operand1, operand2, result FROM operations "
+                + "ORDER BY id DESC LIMIT 10";  // gets only the last 10 operations
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet resultSet = stmt.executeQuery(sql)) {
+
+            System.out.println("ID | Operation | Operand1 | Operand2 | Result");
+            System.out.println("---------------------------------------------");
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String operation = resultSet.getString("operation");
+                double operand1 = resultSet.getDouble("operand1");
+                double operand2 = resultSet.getDouble("operand2");
+                double result = resultSet.getDouble("result");
+                System.out.printf("%d | %s | %.2f | %.2f | %.2f%n", id, operation, operand1, operand2, result);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving past operations: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // hashmap operationsMap to be used to store operations
+        Map<Integer, Operation> operationsMap = new HashMap<>();
+        operationsMap.put(1, new Addition());
+        operationsMap.put(2, new Subtraction());
+        operationsMap.put(3, new Multiplication());
+        operationsMap.put(4, new Division());
+        operationsMap.put(5, new Modulus());
+        operationsMap.put(6, new Power());
+        operationsMap.put(7, new SquareRoot());
+        SortOperation sortOperation = new SortOperation();
+
+        createTable();
+
+        int userChoice;
+
+        // loops displayMenu until user chooses to exit
+        while (true) {
+            DisplayMenu.showMenu();
+
+            userChoice = DisplayMenu.getValidInteger(scanner, "Enter your choice (0-9):");
+            // closes program if user enters '9'
+            if (userChoice == 9) {
+                System.out.println("Exiting program."); // closes program
+                break;
+            }
+
+            // View past operations (new option 10)
+            if (userChoice == 0) {
+                viewPastOperations();
+                continue;
+            }
+
+            if (userChoice == 8) {
+                List<Double> numbers = DisplayMenu.getNumberList(scanner);
+                System.out.print("Sort in ascending order? (y/n): ");
+                boolean ascending = scanner.next().equalsIgnoreCase("y");
+                List<Double> sortedNumbers = sortOperation.performSortOperation(numbers, ascending);
+                System.out.println("Sorted numbers: " + sortedNumbers);
+            } else if (!operationsMap.containsKey(userChoice)) {
+                System.out.println("Invalid input. Please enter a number between 1 and 9.");
+                continue;
+            } else {
+                double n1 = DisplayMenu.getValidInteger(scanner, "Enter the first number: ");
+                double n2 = (userChoice == 7) ? 0 : DisplayMenu.getValidInteger(scanner, "Enter the second number: ");
+                Operation operation = operationsMap.get(userChoice);
+                try {
+                    double result = operation.performOperation(n1, n2);
+                    System.out.println("Result: " + result);
+
+                    // Added 1.3: stores the operation in the database
+                    insertOperation(operation.getClass().getSimpleName(), n1, n2, result);
+                } catch (ArithmeticException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            // ask if the user wants to continue
+            System.out.print("Continue? (y/n): ");
+            String continueChoice = scanner.next().toLowerCase();
+            if (!continueChoice.equals("y")) {
+                System.out.println("Exiting program.");
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+```
