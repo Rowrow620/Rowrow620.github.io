@@ -134,7 +134,7 @@ The main challenges I encountered during this enhancement process involved trans
 
 The experience of converting code from C++ to Java and enhancing it taught me valuable lessons about adapting software across different languages. This skill will be beneficial in my professional career as I work on cross-platform applications or migrate legacy systems to more modern environments.
 
-```
+```java
 import java.util.Scanner;
 
 // Base abstract class
@@ -276,7 +276,8 @@ Enhancing this artifact provided valuable insights into algorithm optimization a
 Feedback played a crucial role in this enhancement. Initially, my code lacked sufficient documentation around time complexity and algorithmic choices, which was highlighted in the feedback I received. To address this, I added detailed comments in the code, explaining the logic behind each algorithm and providing a clear breakdown of Big O notation for the sorting algorithm. This ensured that the code met the standards of both efficiency and clarity.
 
 The updated Main class:
-```
+
+```java
 
 // Main class
 public class Main {
@@ -361,7 +362,7 @@ public class Main {
 ```
 operation examples:
 
-```
+```java
 class SortOperation  {
 
     // time complexity:
@@ -376,7 +377,7 @@ class SortOperation  {
     }
 }
 ```
-```
+```java
 class Addition extends Operation {
     @Override
     public double performOperation(double n1, double n2) {
@@ -398,7 +399,7 @@ The database feature includes storing the type of operation, the operands, and t
 
 The process of integrating SQLite into the calculator application was a very fruitful learning experience. One of the most significant lessons was the importance of data persistence. In previous versions of the application, all operations were handled in memory, meaning that once the program was closed, all data was lost. By adding a database, I learned how to manage persistent storage, giving the application the ability to retain data between sessions and providing users with the ability to retrieve their previous calculations. One of the main challenges I faced was optimizing the database queries to ensure they were efficient. Initially, I didn’t focus enough on the time complexity of operations, but as the application grew, I realized the importance of considering performance. The SQL ORDER BY and LIMIT clauses were used to retrieve the 10 most recent operations efficiently, ensuring the program remains responsive even with larger datasets. 
 
-```
+```java
 
 public class Main {
 
