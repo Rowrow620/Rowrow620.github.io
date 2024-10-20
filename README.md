@@ -1,7 +1,5 @@
-## CS499 Computer Science Capstone 
--
-Capstone repository 
+# CS499 Computer Science Capstone Repository
+### Github Pages: https://Rowrow620.github.io/Rowrow620.github.io/
 
-Github Pages: https://Rowrow620.github.io/Rowrow620.github.io/
----
-#Journals
+## Journals
+[Journal 1:](CS499_Documents/Journal1 "Journal 1")
