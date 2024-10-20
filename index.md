@@ -8,6 +8,8 @@ Having started my journey at SNHU in January of 2023, I have spent almost a full
 
 #### What I Have Learned
 
+#### Reverse Engineered Basic Arithmetic Calculator in C++
+
 While studying in the Computer Science program here at SNHU, I have learned how to think about problems in the mindset of a developer. I have become more aware of the small details, as well as more considerate of coding vulnerabilities throughout any development process I do. I have come to understand the importance of repeated development testing, using tools such as assertions and exceptions where needed to maintain code security and stability. Testing code thoroughly throughout the development process is a vital step in being a great developer. Adopting the mindset that is understanding that there are almost always ways to improve your code despite any confidence in technical skill has been useful in helping me find ways that others would attempt to problem-solve in ways that I would not. 
 Through employing these skills in my development process, I have been able to show just how deep my understanding is in relation to Computer Science techniques, skills, and development tools that are needed for any programming solution, and am capable of learning any tools that either new or necessary for a task due to my experience using a wide variety of software and tools previously. I have grown to be comfortable in Java, C++, and Python programming languages. I have also become stronger at using HTML, CSS, and Javascript. 
 
