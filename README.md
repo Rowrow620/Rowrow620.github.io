@@ -1,6 +1,8 @@
 # CS499 Computer Science Capstone Repository
 ### [ePortfolio](https://Rowrow620.github.io/ePortfolio-JuanSanchez/)
 
+### [Code Review](https://youtu.be/ZDhAX6tFf-Y ) 
+
 ## Journals
 [Journal 1: What Makes a Productive Code Review?](CS499_Documents/Journal1.pdf)
 
