@@ -26,9 +26,11 @@ In CS410, software reverse engineering and how to approach it led to me being ab
 
 Refining my strengths as a developer at SNHU and the development of my ePortfolio has led to a showcase of all my strengths and has started preparing me for the professional world. Understanding and applying data structures and algorithms has been a very big cornerstone of my growth here at SNHU. One of the highlights of my learning here involved enhancing the efficiency of operations in what used to be a C++-based arithmetic solver into a full Java-based multipurpose calculator application, which is now a key part of my ePortfolio. By improving the algorithmic complexity, I learned how to balance performance with maintainability, a skill that is essential when optimizing software for real applications. Additionally, my experience in my CS410 Reverse Software Engineering project taught me how to convert and analyze binary code, showcasing my ability to dissect complex algorithms and ensure the security and integrity of code. This depth in algorithms has shaped my professional goals toward roles that require performance optimization and problem-solving, such as back-end development or algorithm design.
 
+In this ePortfolio, I will be enhancing the artifact in 3 different key areas: *Software design and engineering, Algorithms and Data structures, and Databases,* to showcase my understanding of all the aformentioned sections of Computer Science and prove my growth as a programmer since I started here at SNHU.
+
 ## Code Review
 
-## Original Artifacts
+## The Original Artifact and Why I Choose It
 
 #### Reverse Engineered Basic Arithmetic Calculator in C++
 
@@ -44,6 +46,8 @@ The vulnerabilities I found were as follows:
 In this code, the user would be shown a displaymenu with multiple options numbered 1 through 4. Once the user entered their choice, they would enter 2 numbers for the chosen arithmetic operation (add, subtract, or multiply). The arithmetic operation's answer would be printed on the terminal for the user to see. In my edited code, I added input validation for both the user choice and the user numbers input for the operations to ensure the user choice was 1-4 and that the operation numbers would not be too large as to cause overflow. 
 
 This will be the artifact improved in each of the 3 improved artifact sections. 
+
+The three enhanced artifacts included in this portfolio come together to illustrate a comprehensive demonstration of my skills and growth as a computer science professional. These artifacts showcase my proficiency in core areas of software development, including reverse engineering, software design, algorithms and data structures, and database integration. Each artifact represents a significant step in the evolution of the original C++ project, highlighting my ability to enhance and optimize solutions in various technical domains.
 
 The orginal C++ code once fixed of vulnerabilties:
 
