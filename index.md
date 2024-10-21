@@ -34,6 +34,8 @@ In this ePortfolio, I will be enhancing the artifact in 3 different key areas: *
 
 ### [Code Review](https://youtu.be/ZDhAX6tFf-Y ) 
 
+In the link above, I will present why I chose this artifact, as well as how I plan to enhance the artifact in all 3 sections based on the requirements of the ePortfolio.
+
 ## The Original Artifact and Why I Choose It
 
 #### Reverse Engineered Basic Arithmetic Calculator in C++
