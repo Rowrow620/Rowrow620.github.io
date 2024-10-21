@@ -34,7 +34,7 @@ In this ePortfolio, I will be enhancing the artifact in 3 different key areas: *
 
 ### [Code Review](https://youtu.be/ZDhAX6tFf-Y ) 
 
-In the link above, I will present why I chose this artifact, as well as how I plan to enhance the artifact in all 3 sections based on the requirements of the ePortfolio.
+In the link above, I will present why I chose this artifact, as well as how I plan to enhance the artifact in all 3 sections based on the requirements of the ePortfolio. I will also go over these details down below, but the code review is a great way to get a better understanding of the original code and my thought process going into this project.
 
 ## The Original Artifact and Why I Choose It
 
