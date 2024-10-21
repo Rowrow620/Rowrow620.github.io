@@ -3,6 +3,8 @@
 
 ### [Code Review](https://youtu.be/ZDhAX6tFf-Y ) 
 
+All 3 Enhancements will be using the same artifact from CS410: Reverse Engineering.
+
 ## Journals
 [Journal 1: What Makes a Productive Code Review?](CS499_Documents/Journal1.pdf)
 
